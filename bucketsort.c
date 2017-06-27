@@ -40,7 +40,7 @@ void bucket_sort(unsigned *array, unsigned n) {
 
 //sort "key" considering the associated values in "val"
 unsigned *arg_bucket_sort(unsigned *key, unsigned *val, unsigned n) {
-  unsigned i,j;
+  unsigned i;
   static unsigned *c=NULL, *cc=NULL, *key2;
   if (c==NULL){
     c=malloc(n*sizeof(unsigned));//count
@@ -57,7 +57,8 @@ unsigned *arg_bucket_sort(unsigned *key, unsigned *val, unsigned n) {
     cc[i]=cc[i-1]+c[i-1];
     c[i-1]=0;
   }
-
+  c[i]=0;
+  
   for (i=0;i<n;i++){
     key2[cc[val[i]] + c[val[i]]++]=key[i];
   }
